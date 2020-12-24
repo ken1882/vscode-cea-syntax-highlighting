@@ -1,0 +1,67 @@
+{$STRICT}
+
+define(address, GAME.exe+123ABC)
+define(bytes, 0F 2F 05 7C A4 6A FE)
+
+////
+//// ------------ Enable ------------
+[ENABLE]
+alloc(memSomeHook, 0x400, address)
+
+label(fltSomeHook)
+registerSymbol(fltSomeHook)
+label(flgSomeHook)
+registerSymbol(flgSomeHook)
+label(ptrSomeHook)
+registerSymbol(ptrSomeHook)
+
+label(n_code)
+label(o_code)
+label(exit)
+label(return)
+
+memSomeHook:
+  fltSomeHook:
+    dd (float)1
+  flgSomeHook:
+    db 00
+  align 10
+  ptrSomeHook:
+    dq 0
+  align 10 CC
+  n_code:
+    mov [ptrSomeHook],rbx
+    cmp byte ptr [flgSomeHook],0
+    je o_code
+    cmp byte ptr [flgSomeHook],1
+    jne @f
+      movss xmm0,[fltSomeHook]
+      jmp o_code
+    @@:
+      mov byte ptr [flgSomeHook],0
+  o_code:
+    movss [rbx+10],xmm0
+  exit:
+    jmp return
+  
+////
+//// ------------ Injection Point ------------
+address:
+  jmp n_code
+  nop 
+  nop 
+
+return:
+
+////
+//// ------------ Disable ------------
+[DISABLE]
+////
+//// ------------ Injection Point ------------
+address:
+  db bytes
+
+unregisterSymbol(fltSomeHook)
+unregisterSymbol(flgSomeHook)
+unregisterSymbol(ptrSomeHook)
+dealloc(memSomeHook)

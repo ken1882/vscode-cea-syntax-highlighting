@@ -1,0 +1,28 @@
+{
+    "name": "cea",
+    "displayName": "auto-assembler-syntax-highlighting",
+    "description": "Syntax hilighlighting for cheat engine auto assembler script",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "cea",
+            "aliases": ["auto-assembler", "cea"],
+            "extensions": [".cea"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "cea",
+            "scopeName": "source.cea",
+            "path": "./syntaxes/cea.tmLanguage.json",
+            "embeddedLanguages": {
+                "meta.embedded.block.lua": "lua"
+            }
+        }]
+    }
+}
