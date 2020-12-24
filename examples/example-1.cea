@@ -1,0 +1,25 @@
+define(someValue, (int)100)
+alloc(someMemory, 512)
+label(someCode)
+label(someData)
+registerSymbol(someMemory)
+registerSymbol(someData)
+
+someMemory:
+  someCode:
+    mov eax,[00400000]
+    mov [someData],eax
+    mov [someData+4],123
+    mov [someData+8],$123
+    mov [someData+C],#123
+    mov [someData+10],(int)123
+    mov [someData+14],(float)123
+    mov [someData+18],someValue
+    mov [someData+1C],'Hey!'
+    mov byte ptr [someData+20],0
+  ret
+
+  someData:
+
+createThread(someCode)
+// End of script
