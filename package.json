@@ -2,7 +2,7 @@
     "name": "cea",
     "displayName": "Auto-assembler Syntax Highlighting",
     "description": "Syntax hilighlighting for cheat engine auto assembler script",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "publisher": "compeador",
     "repository": {"url": "https://github.com/ken1882/vscode-cea-syntax-highlighting"},
     "engines": {
