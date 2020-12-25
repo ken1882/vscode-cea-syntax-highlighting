@@ -1,7 +1,10 @@
 {$STRICT}
 
 define(address, GAME.exe+123ABC)
-define(bytes, 0F 2F 05 7C A4 6A FE)
+{$lua}
+bytes = readBytes(getAddress("Game.exe")+0x123ABC, 5, true)
+return string.format("define(bytes,%x %x %x %x %x)",bytes[1],bytes[2],bytes[3],bytes[4],bytes[5])
+{$asm}
 
 ////
 //// ------------ Enable ------------

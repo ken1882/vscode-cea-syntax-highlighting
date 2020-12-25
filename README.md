@@ -5,6 +5,13 @@ Visual Studio Code syntax highlighting extension for Cheat Engine Auto-Assembler
 ## Features
 
 * Syntax highlighting for `.cea` (cheat-engine-assembler) files including embed lua
+
+Official CE AA script example 1<br>
+![](https://i.imgur.com/FJs9PAV.png)
+
+Example 2<br>
+![](https://i.imgur.com/VILg58M.png)
+
 * TODO: Autocomplete
 
 ## Known Issues
@@ -12,5 +19,7 @@ Visual Studio Code syntax highlighting extension for Cheat Engine Auto-Assembler
 NULL
 
 ## Release Notes
-* v0.0.1
+* v0.1.1
+  * Update README.md with image preview
+* v0.1.0
   * Initial release
