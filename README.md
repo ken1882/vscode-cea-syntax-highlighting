@@ -19,6 +19,8 @@ Example 2<br>
 NULL
 
 ## Release Notes
+* v0.1.2
+  * Add missing built-in function and r8-15 32bits mode
 * v0.1.1
   * Update README.md with image preview
 * v0.1.0
